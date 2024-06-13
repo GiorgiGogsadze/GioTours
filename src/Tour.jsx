@@ -8,7 +8,7 @@ export default function Tour() {
   const { id } = useParams();
   const { currentLang } = useSelector((state) => state.lang);
   const { currentUser } = useSelector((state) => state.users);
-  const [tour, setTour] = useState(() => tours.find((el) => el.id === +id));
+  const [tour] = useState(() => tours.find((el) => el.id === +id));
   const daysLeft = Math.floor(
     (new Date(tour?.startDate) - new Date()) / (1000 * 60 * 60 * 24)
   );

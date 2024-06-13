@@ -1,0 +1,46 @@
+.about {
+  padding: 5rem 0;
+  max-width: 60vw;
+  font-size: 1.5rem;
+  @media only screen and (max-width: 62.5em) {
+    max-width: 100vw;
+  }
+}
+.about p,
+ul {
+  margin-left: 1rem;
+}
+.about li {
+  list-style: none;
+}
+
+.about b {
+  color: rgb(70, 70, 70);
+}
+
+.h3 {
+  font-size: 1.8rem;
+  margin: 0.5rem 0;
+  color: rgb(55, 55, 55);
+}
+
+.link,
+.link:visited,
+.link:active {
+  font-size: 1.6rem;
+  text-decoration: none;
+  font-weight: 700;
+  color: #28b487;
+}
+
+.icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  fill: #7dd56f;
+  margin-right: 1rem;
+}
+
+.lwi {
+  display: flex;
+  align-items: center;
+}

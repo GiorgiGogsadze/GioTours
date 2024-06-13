@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import Calendar from "./Calendar";
 
 export default function TourCard({
   id,
@@ -10,12 +11,9 @@ export default function TourCard({
   location,
 }) {
   const [imgClicked, setImgClicked] = useState(false);
+  const timeLeft = new Date(startDate) - new Date();
   return (
-    <div
-      className={`card ${
-        new Date(startDate) - new Date() >= 0 ? "card-active" : "card-inactive"
-      }`}
-    >
+    <div className={`card ${timeLeft >= 0 ? "card-active" : "card-inactive"}`}>
       <div className="card__header">
         <div
           className={`card__picture ${imgClicked ? "image-clicked" : ""}`}
@@ -47,6 +45,14 @@ export default function TourCard({
             })}
           </span>
         </div>
+        {timeLeft > 0 && (
+          <div className="card__data card__calendar">
+            <svg className="card__icon">
+              <use xlinkHref="/img/icons.svg#icon-clock"></use>
+            </svg>
+            <Calendar difference={timeLeft} />
+          </div>
+        )}
       </div>
       <div className="card__footer">
         <p>

@@ -1,15 +1,16 @@
+import s from "./About.module.css";
 export default function About() {
   return (
-    <section id="about" style={{ marginTop: "-8rem", padding: "5rem 0" }}>
-      <h2>About Our Travel Agency</h2>
-      <h3>Who We Are</h3>
+    <section id="about" style={{ marginTop: "-8rem" }} className={s.about}>
+      <h2 className="heading-secondary">About Our Travel Agency</h2>
+      <h3 className={s.h3}>Who We Are</h3>
       <p>
         we believe that travel is not just about visiting new places; it&apos;s
         about creating unforgettable memories and connecting with the world.
         Established in 2010, our agency has been curating extraordinary travel
         experiences for adventurers, families, and solo travelers alike.
       </p>
-      <h3>Our Services</h3>
+      <h3 className={s.h3}>Our Services</h3>
       <ul>
         <li>
           <b>Tailored Itineraries</b>: We specialize in crafting personalized
@@ -30,7 +31,7 @@ export default function About() {
           a positive impact on the environment and support local livelihoods.
         </li>
       </ul>
-      <h3>What Sets Us Apart</h3>
+      <h3 className={s.h3}>What Sets Us Apart</h3>
       <ul>
         <li>
           <b>Passion for Exploration</b>: We&apos;re not just travel agents;
@@ -48,23 +49,43 @@ export default function About() {
           stay with you forever.
         </li>
       </ul>
-      <h3>Contact Us</h3>
+      <h3 className={s.h3}>contact information</h3>
       <p>Ready to embark on your next adventure? Reach out to us:</p>
       <ul>
-        <li>📞 Call us at +1 (555) 123-4567</li>
-        <li>📧 Email us at info@tours.com</li>
-        <li>📍 Visit our office at 123 Main Street Cityville</li>
+        <li className={s.lwi}>
+          <svg className={s.icon}>
+            <use xlinkHref="/img/icons.svg#icon-phone"></use>
+          </svg>{" "}
+          Call us at +1 (555) 123-4567
+        </li>
+        <li className={s.lwi}>
+          <svg className={s.icon}>
+            <use xlinkHref="/img/icons.svg#icon-mail"></use>
+          </svg>{" "}
+          Email us at info@tours.com
+        </li>
+        <li className={s.lwi}>
+          <svg className={s.icon}>
+            <use xlinkHref="/img/icons.svg#icon-map"></use>
+          </svg>{" "}
+          Visit our office at 123 Main Street Cityville
+        </li>
       </ul>
       <p>
         Follow us on{" "}
         <a
           href="https://www.instagram.com/wanderlustadventures"
           target="_blank"
+          className={s.link}
         >
           Instagram
         </a>{" "}
         and{" "}
-        <a href="https://www.facebook.com/search/top?q=tours" target="_blank">
+        <a
+          href="https://www.facebook.com/search/top?q=tours"
+          target="_blank"
+          className={s.link}
+        >
           Facebook
         </a>{" "}
         for travel inspiration and updates.
@@ -72,7 +93,6 @@ export default function About() {
       <p>
         Let&apos;s explore the world together! --- Feel free to customize this
         text to match your agency&apos;s unique voice and style. Safe travels!
-        🌎✈️
       </p>
     </section>
   );

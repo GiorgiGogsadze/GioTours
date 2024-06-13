@@ -2,14 +2,15 @@ import { useEffect, useState } from "react";
 import About from "./About";
 import { useSelector } from "react-redux";
 
+const initalFormData = {
+  name: "",
+  email: "",
+  message: "",
+  subscribe: false,
+};
 export default function Contact() {
   const { currentUser } = useSelector((state) => state.users);
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-    subscribe: false,
-  });
+  const [formData, setFormData] = useState(initalFormData);
 
   useEffect(() => {
     if (currentUser.email) {
@@ -25,6 +26,7 @@ export default function Contact() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setFormData(initalFormData);
     console.log(formData);
   };
 
@@ -83,6 +85,7 @@ export default function Contact() {
                 id="subscribe"
                 checked={formData.subscribe}
                 onChange={handleChange}
+                style={{ cursor: "pointer", width: "1.7rem", height: "1.7rem" }}
               />
               <label
                 className="form__label"

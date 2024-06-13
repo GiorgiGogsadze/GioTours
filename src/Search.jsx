@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { fillTours, searchTour } from "./data/toursSlice";
+import { searchTour } from "./data/toursSlice";
 import { useNavigate } from "react-router-dom";
 
 export default function Search() {
@@ -17,7 +17,7 @@ export default function Search() {
       <form
         className="nav__search"
         onSubmit={handleSubmit}
-        onChange={(e) => !e.target.value && dispatch(fillTours())}
+        onChange={(e) => !e.target.value && dispatch(searchTour(""))}
       >
         <button className="nav__search-btn" type="submit">
           <svg>
