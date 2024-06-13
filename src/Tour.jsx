@@ -1,24 +1,17 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import ErrorPage from "./ErrorPage";
-import { getTours } from "./data/toursSlice";
+import tours from "./data/tours.data";
 
 export default function Tour() {
   const { id } = useParams();
   const { currentLang } = useSelector((state) => state.lang);
   const { currentUser } = useSelector((state) => state.users);
-  const [tour, setTour] = useState();
+  const [tour, setTour] = useState(() => tours.find((el) => el.id === +id));
   const daysLeft = Math.floor(
     (new Date(tour?.startDate) - new Date()) / (1000 * 60 * 60 * 24)
   );
-
-  useEffect(() => {
-    (async () => {
-      const allTours = await getTours();
-      setTour(allTours.find((el) => el.id === +id));
-    })();
-  }, [id]);
 
   if (!tour || daysLeft < 0) return <ErrorPage />;
   return (

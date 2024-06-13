@@ -1,16 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
+import tours from "./tours.data";
 
 const initialState = {
-  tours: [],
+  tours: tours,
 };
-
-export const getTours = async () => {
-  const response = await fetch("/tours.data.json");
-  const data = await response.json();
-  return data.tours;
-};
-
-initialState.tours = await getTours();
 
 const toursSlice = createSlice({
   name: "tours",
@@ -33,7 +26,7 @@ const toursSlice = createSlice({
       }
     },
     fillTours(state) {
-      state.tours = initialState.tours;
+      state.tours = tours;
     },
   },
 });
