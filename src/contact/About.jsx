@@ -1,4 +1,4 @@
-import s from "./About.module.css";
+import s from "../styles/About.module.css";
 export default function About() {
   return (
     <section id="about" style={{ marginTop: "-8rem" }} className={s.about}>

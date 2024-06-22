@@ -1,14 +1,14 @@
 import { Suspense, lazy } from "react";
-import ErrorPage from "./ErrorPage";
-import Header from "./Header";
-import Loader from "./Loader";
+import ErrorPage from "./errorPage/ErrorPage";
+import Header from "./header/Header";
+import Loader from "./components/Loader";
 import { Route, Routes } from "react-router-dom";
 
-const Home = lazy(() => import("./Home"));
-const Tour = lazy(() => import("./Tour"));
-const SignUpForm = lazy(() => import("./SignUpForm"));
-const LoginForm = lazy(() => import("./LoginForm"));
-const Contact = lazy(() => import("./Contact"));
+const Home = lazy(() => import("./home/Home"));
+const Tour = lazy(() => import("./tour/Tour"));
+const SignUpForm = lazy(() => import("./userPlace/SignUpForm"));
+const LoginForm = lazy(() => import("./userPlace/LoginForm"));
+const Contact = lazy(() => import("./contact/Contact"));
 
 export default function App() {
   return (

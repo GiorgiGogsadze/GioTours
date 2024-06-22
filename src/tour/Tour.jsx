@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
-import ErrorPage from "./ErrorPage";
-import tours from "./data/tours.data";
+import ErrorPage from "../errorPage/ErrorPage";
+import tours from "../data/tours.data";
 
 export default function Tour() {
   const { id } = useParams();

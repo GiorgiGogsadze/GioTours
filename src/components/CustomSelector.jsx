@@ -2,14 +2,13 @@ import { useState } from "react";
 
 export default function CustomSelector({
   options,
-  defaultValue,
+  value,
   handleClick,
   mainClass,
   optContClass,
   optClass,
 }) {
   const [drop, setDrop] = useState(false);
-  const [mainValue, setMainValue] = useState(defaultValue);
   if (!options) return;
   return (
     <div
@@ -25,7 +24,7 @@ export default function CustomSelector({
           justifyContent: "space-between",
         }}
       >
-        <span>{options.find((el) => el.value === mainValue).label}</span>
+        <span>{options.find((el) => el.value === value).label}</span>
         <span>▼</span>
       </div>
       {drop ? (
@@ -37,10 +36,7 @@ export default function CustomSelector({
             <div
               key={el.value}
               className={optClass}
-              onClick={() => {
-                setMainValue(el.value);
-                handleClick(el.value);
-              }}
+              onClick={() => handleClick(el.value)}
             >
               {el.label}
             </div>

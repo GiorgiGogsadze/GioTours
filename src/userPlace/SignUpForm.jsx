@@ -2,7 +2,7 @@ import { useState } from "react";
 import MediaOptions from "./MediaOptions";
 import { useDispatch } from "react-redux";
 import UserAlert from "./UserAlert";
-import { createUser } from "./data/usersSlice";
+import { createUser } from "../data/usersSlice";
 
 export default function SignUpForm() {
   const [email, setEmail] = useState("");

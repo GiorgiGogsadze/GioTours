@@ -2,7 +2,7 @@ import { useState } from "react";
 import MediaOptions from "./MediaOptions";
 import UserAlert from "./UserAlert";
 import { useDispatch } from "react-redux";
-import { login } from "./data/usersSlice";
+import { login } from "../data/usersSlice";
 
 export default function LoginForm() {
   const [name, setName] = useState("");

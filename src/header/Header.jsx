@@ -4,17 +4,21 @@ import UserPlace from "./UserPlace";
 import Search from "./Search";
 import { useState } from "react";
 import { HashLink } from "react-router-hash-link";
+import { useDispatch } from "react-redux";
+import { clearParameters } from "../data/toursSlice";
 
 export default function Header() {
   const [droped, setDroped] = useState(false);
+  const dispatch = useDispatch();
   return (
     <header className="header">
       <Search />
-      {/* <div className="header__logo">
-        <img src="/img/logo-white.png" alt="Natours logo" />
-      </div> */}
       <nav className="nav nav--user">
-        <NavLink to="/" className="nav__el">
+        <NavLink
+          to="/"
+          className="nav__el"
+          onClick={() => dispatch(clearParameters())}
+        >
           Home
         </NavLink>
         <div

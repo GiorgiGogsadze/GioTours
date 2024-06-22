@@ -1,4 +1,4 @@
-import s from "./MediaOptions.module.css";
+import s from "../styles/MediaOptions.module.css";
 export default function MediaOptions() {
   return (
     <div className={s.container}>

@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import Alert from "./Alert";
-import { clearAlert } from "./data/usersSlice";
+import Alert from "../components/Alert";
+import { clearAlert } from "../data/usersSlice";
 import { useEffect } from "react";
 
 export default function UserAlert({ clearFields }) {

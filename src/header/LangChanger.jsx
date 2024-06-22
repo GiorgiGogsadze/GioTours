@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { changeLang } from "./data/langSlice";
+import { changeLang } from "../data/langSlice";
 
 export default function LangChanger() {
   const { langs, currentLang } = useSelector((store) => store.lang);
@@ -9,7 +9,7 @@ export default function LangChanger() {
       title="lang"
       name="lang"
       className="lang-input"
-      value={currentLang.value}
+      value={currentLang}
       onChange={(e) => dispach(changeLang(e.target.value))}
     >
       {langs.map((el) => (

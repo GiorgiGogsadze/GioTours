@@ -1,12 +1,12 @@
-import { useDispatch } from "react-redux";
-import s from "./ListParameters.module.css";
-import CustomSelector from "./CustomSelector";
+import { useDispatch, useSelector } from "react-redux";
+import s from "../styles/ListParameters.module.css";
+import CustomSelector from "../components/CustomSelector";
 import {
   filterContinent,
   filterSeason,
   filterTransport,
   sortTours,
-} from "./data/toursSlice";
+} from "../data/toursSlice";
 
 const sortOptions = [
   { value: "none", label: "Sort by date" },
@@ -35,8 +35,11 @@ const transportOptions = [
   { value: "Bus", label: "Bus" },
   { value: "Ship", label: "Ship" },
 ];
+
 export default function ListParameters() {
+  const { parameters } = useSelector((state) => state.tours);
   const dispatch = useDispatch();
+
   return (
     <div className={s.container}>
       <div className={s.filtersContainer}>
@@ -44,7 +47,7 @@ export default function ListParameters() {
           <label>Continent</label>
           <CustomSelector
             options={continentOptions}
-            defaultValue="all"
+            value={parameters.continent}
             handleClick={(value) => dispatch(filterContinent(value))}
             mainClass={s.selector}
             optContClass={s.optionsBox}
@@ -55,7 +58,7 @@ export default function ListParameters() {
           <label>Season</label>
           <CustomSelector
             options={seasonOptions}
-            defaultValue="all"
+            value={parameters.season}
             handleClick={(value) => dispatch(filterSeason(value))}
             mainClass={s.selector}
             optContClass={s.optionsBox}
@@ -66,7 +69,7 @@ export default function ListParameters() {
           <label>Transport</label>
           <CustomSelector
             options={transportOptions}
-            defaultValue="all"
+            value={parameters.transport}
             handleClick={(value) => dispatch(filterTransport(value))}
             mainClass={s.selector}
             optContClass={s.optionsBox}
@@ -76,7 +79,7 @@ export default function ListParameters() {
       </div>
       <CustomSelector
         options={sortOptions}
-        defaultValue="none"
+        value={parameters.sort}
         handleClick={(value) => dispatch(sortTours(value))}
         mainClass={s.selector}
         optContClass={s.optionsBox}

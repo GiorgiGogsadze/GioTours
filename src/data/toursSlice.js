@@ -1,19 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit";
 import toursData from "./tours.data";
 
-const initialState = {
-  tours: toursData,
-};
-
-let parameters = {
+const initialParameters = {
   search: "",
   continent: "all",
   season: "all",
   transport: "all",
   sort: "none",
 };
+const initialState = {
+  tours: toursData,
+  parameters: initialParameters,
+};
 
-function doAll() {
+function doAll(parameters) {
   let tours = toursData;
   if (parameters.search !== "") {
     tours = tours.filter(
@@ -57,42 +57,44 @@ function doAll() {
   }
   return tours;
 }
+
 const toursSlice = createSlice({
   name: "tours",
   initialState,
   reducers: {
     searchTour(state, action) {
-      parameters.search = action.payload;
-      state.tours = doAll();
+      state.parameters.search = action.payload;
+      state.tours = doAll(state.parameters);
     },
     sortTours(state, action) {
-      parameters.sort = action.payload;
-      state.tours = doAll();
+      state.parameters.sort = action.payload;
+      state.tours = doAll(state.parameters);
     },
     filterContinent(state, action) {
-      parameters.continent = action.payload;
-      state.tours = doAll();
+      state.parameters.continent = action.payload;
+      state.tours = doAll(state.parameters);
     },
     filterSeason(state, action) {
-      parameters.season = action.payload;
-      state.tours = doAll();
+      state.parameters.season = action.payload;
+      state.tours = doAll(state.parameters);
     },
     filterTransport(state, action) {
-      parameters.transport = action.payload;
-      state.tours = doAll();
+      state.parameters.transport = action.payload;
+      state.tours = doAll(state.parameters);
     },
-    fillTours(state) {
-      state.tours = toursData;
+    clearParameters(state) {
+      state.parameters = initialParameters;
+      state.tours = doAll(state.parameters);
     },
   },
 });
 
 export default toursSlice.reducer;
 export const {
-  fillTours,
   searchTour,
   sortTours,
   filterContinent,
   filterSeason,
   filterTransport,
+  clearParameters,
 } = toursSlice.actions;

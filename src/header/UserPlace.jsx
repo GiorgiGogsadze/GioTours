@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { logout } from "./data/usersSlice";
+import { logout } from "../data/usersSlice";
 
 export default function UserPlace() {
   const { currentUser } = useSelector((store) => store.users);
