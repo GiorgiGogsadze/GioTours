@@ -36,47 +36,47 @@ const queryClient = new QueryClient({
 
 export default function App() {
   return (
-    <InternetGate>
-      <QueryClientProvider client={queryClient}>
-        <div style={{ fontSize: "20px", position: "absolute" }}>
-          <ReactQueryDevtools initialIsOpen={false} />
-        </div>
-        <SupabaseSubscribes />
-        <BrowserRouter>
-          <AlertProvider>
-            <AlertTop />
-            <AlertConfirm />
-            <Suspense fallback={<Spinner />}>
-              <ScrollToTop />
-              <Routes>
-                <Route element={<AppLayout />}>
-                  <Route path="/" element={<Home />} />
-                  <Route path="/tours/:tourId" element={<Tour />} />
-                  <Route path="/about" element={<About />} />
-                  <Route path="/signUp" element={<SignUpForm />} />
-                  <Route path="/logIn" element={<LoginForm />} />
-                  <Route path="/users/:userId" element={<UserProfile />} />
-                  <Route
-                    path="/editUser"
-                    element={
-                      <AuthGate>
-                        <EditUser />
-                      </AuthGate>
-                    }
-                  />
-                  <Route
-                    path="*"
-                    element={<ErrorPage message="Page not found!" />}
-                  />
-                </Route>
-                <Route path="/admin" element={<AdminGate />}>
-                  <Route index element={<AdminMain />} />
-                </Route>
-              </Routes>
-            </Suspense>
-          </AlertProvider>
-        </BrowserRouter>
-      </QueryClientProvider>
-    </InternetGate>
+    // <InternetGate>
+    <QueryClientProvider client={queryClient}>
+      <div style={{ fontSize: "20px", position: "absolute" }}>
+        <ReactQueryDevtools initialIsOpen={false} />
+      </div>
+      <SupabaseSubscribes />
+      <BrowserRouter>
+        <AlertProvider>
+          <AlertTop />
+          <AlertConfirm />
+          <Suspense fallback={<Spinner />}>
+            <ScrollToTop />
+            <Routes>
+              <Route element={<AppLayout />}>
+                <Route path="/" element={<Home />} />
+                <Route path="/tours/:tourId" element={<Tour />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/signUp" element={<SignUpForm />} />
+                <Route path="/logIn" element={<LoginForm />} />
+                <Route path="/users/:userId" element={<UserProfile />} />
+                <Route
+                  path="/editUser"
+                  element={
+                    <AuthGate>
+                      <EditUser />
+                    </AuthGate>
+                  }
+                />
+                <Route
+                  path="*"
+                  element={<ErrorPage message="Page not found!" />}
+                />
+              </Route>
+              <Route path="/admin" element={<AdminGate />}>
+                <Route index element={<AdminMain />} />
+              </Route>
+            </Routes>
+          </Suspense>
+        </AlertProvider>
+      </BrowserRouter>
+    </QueryClientProvider>
+    // </InternetGate>
   );
 }
