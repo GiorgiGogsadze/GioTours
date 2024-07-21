@@ -11,6 +11,9 @@ import InternetGate from "./components/InternetGate";
 import SupabaseSubscribes from "./components/SupabaseSubscribes";
 import AlertTop from "./Alert/AlertTop";
 import AlertConfirm from "./Alert/AlertConfirm";
+import AdminGate from "./admin/AdminGate";
+import Spinner from "./components/Spinner";
+import ScrollToTop from "./components/ScrollToTop";
 
 const Home = lazy(() => import("./home/Home"));
 const Tour = lazy(() => import("./tour/Tour"));
@@ -30,8 +33,6 @@ const queryClient = new QueryClient({
     },
   },
 });
-import AdminGate from "./admin/AdminGate";
-import Spinner from "./components/Spinner";
 
 export default function App() {
   return (
@@ -41,12 +42,12 @@ export default function App() {
           <ReactQueryDevtools initialIsOpen={false} />
         </div>
         <SupabaseSubscribes />
-
         <BrowserRouter>
           <AlertProvider>
             <AlertTop />
             <AlertConfirm />
             <Suspense fallback={<Spinner />}>
+              <ScrollToTop />
               <Routes>
                 <Route element={<AppLayout />}>
                   <Route path="/" element={<Home />} />
