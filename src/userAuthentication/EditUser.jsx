@@ -44,10 +44,7 @@ export default function EditUser() {
     if (fullName !== real_name) parameters.fullName = fullName;
     if (!isDisabled("email") && emailPar !== email) parameters.email = emailPar;
     if (!isDisabled("phone") && phonePar !== phone) parameters.phone = phonePar;
-    if (
-      !isDisabled("userName") &&
-      userName !== curUser.user_metadata.user_name
-    ) {
+    if (!isDisabled("userName") && userName !== user_name) {
       parameters.userName = userName;
       if (isRegisteredHere) parameters.doChangeEmail = true;
     }
