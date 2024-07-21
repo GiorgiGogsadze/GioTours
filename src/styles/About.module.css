@@ -5,6 +5,9 @@
   @media only screen and (max-width: 62.5em) {
     max-width: 100vw;
   }
+  @media only screen and (max-width: 25em) {
+    padding-top: 10rem;
+  }
 }
 .about p,
 ul {

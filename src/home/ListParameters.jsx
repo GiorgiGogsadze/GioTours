@@ -1,89 +1,56 @@
-import { useDispatch, useSelector } from "react-redux";
 import s from "../styles/ListParameters.module.css";
-import CustomSelector from "../components/CustomSelector";
-import {
-  filterContinent,
-  filterSeason,
-  filterTransport,
-  sortTours,
-} from "../data/toursSlice";
+import CustomUrlChooser from "../components/CustomUrlChooser";
+import CustomUrlSelector from "../components/CustomUrlSelector";
+import { useState } from "react";
 
 const sortOptions = [
-  { value: "none", label: "Sort by date" },
-  { value: "soon", label: "First soonest" },
-  { value: "late", label: "First Latest" },
+  { value: "id-desc", label: "Newly added" },
+  { value: "start_date-asc", label: "start date ↑" },
+  { value: "start_date-desc", label: "start date ↓" },
+  { value: "price-asc", label: "Price ↑" },
+  { value: "price-desc", label: "Price ↓" },
+  { value: "number_of_bookings-asc", label: "bookings ↑" },
+  { value: "number_of_bookings-desc", label: "bookings ↓" },
 ];
-const continentOptions = [
-  { value: "all", label: "All" },
-  { value: "Europe", label: "Europe" },
-  { value: "Asia", label: "Asia" },
-  { value: "Africa", label: "Africa" },
-  { value: "North America", label: "North America" },
-  { value: "South America", label: "South America" },
-  { value: "Australia", label: "Australia" },
-];
+
 const seasonOptions = [
-  { value: "all", label: "All" },
-  { value: "Spring", label: "Spring" },
-  { value: "Summer", label: "Summer" },
-  { value: "Fall", label: "Fall" },
-  { value: "Winter", label: "Winter" },
-];
-const transportOptions = [
-  { value: "all", label: "All" },
-  { value: "Plane", label: "Plane" },
-  { value: "Bus", label: "Bus" },
-  { value: "Ship", label: "Ship" },
+  { value: "spring", label: "Spring" },
+  { value: "summer", label: "Summer" },
+  { value: "fall", label: "Fall" },
+  { value: "winter", label: "Winter" },
 ];
 
 export default function ListParameters() {
-  const { parameters } = useSelector((state) => state.tours);
-  const dispatch = useDispatch();
-
+  const [parameters, setParameters] = useState({
+    search: "",
+    continent: "all",
+    season: "all",
+    transport: "all",
+    sort: "start_date",
+  });
   return (
     <div className={s.container}>
       <div className={s.filtersContainer}>
-        <div>
-          <label>Continent</label>
-          <CustomSelector
-            options={continentOptions}
-            value={parameters.continent}
-            handleClick={(value) => dispatch(filterContinent(value))}
-            mainClass={s.selector}
-            optContClass={s.optionsBox}
-            optClass={s.option}
-          />
-        </div>
-        <div>
-          <label>Season</label>
-          <CustomSelector
-            options={seasonOptions}
-            value={parameters.season}
-            handleClick={(value) => dispatch(filterSeason(value))}
-            mainClass={s.selector}
-            optContClass={s.optionsBox}
-            optClass={s.option}
-          />
-        </div>
-        <div>
-          <label>Transport</label>
-          <CustomSelector
-            options={transportOptions}
-            value={parameters.transport}
-            handleClick={(value) => dispatch(filterTransport(value))}
-            mainClass={s.selector}
-            optContClass={s.optionsBox}
-            optClass={s.option}
-          />
-        </div>
+        <label>Filters: </label>
+        <CustomUrlChooser
+          field="season"
+          options={seasonOptions}
+          // handleClick={(value, isActive) => console.log(value, isActive)}
+          optContClass={s.chooserOptCont}
+          optClass={s.chooserOpt}
+          optClassActive={s.chooserOptActive}
+          // defaultValues={["spring", "summer", "fall", "winter"]}
+        />
       </div>
-      <CustomSelector
+
+      <CustomUrlSelector
+        field="sort"
         options={sortOptions}
-        value={parameters.sort}
-        handleClick={(value) => dispatch(sortTours(value))}
+        // handleClick={(value) => console.log(value)}
         mainClass={s.selector}
         optContClass={s.optionsBox}
         optClass={s.option}
+        optClassActive={s.optionActive}
       />
     </div>
   );

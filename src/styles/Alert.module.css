@@ -1,0 +1,78 @@
+.alertTop {
+  position: fixed;
+  top: 1%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  color: #fff;
+  font-size: 1.8rem;
+  font-weight: 400;
+  text-align: center;
+  border-radius: 5px;
+  padding: 1.6rem 15rem;
+  box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.25);
+  @media only screen and (max-width: 60em) {
+    padding: 1.6rem 10rem;
+  }
+  @media only screen and (max-width: 30em) {
+    padding: 1.6rem 5rem;
+  }
+}
+.alertTop--success {
+  background-color: #20bf6b;
+}
+.alertTop--error {
+  background-color: #eb4d4b;
+}
+
+.alertTop--notify {
+  color: #6c6969;
+  background-color: #eaeff2;
+}
+
+.alertConfirmContainer {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  backdrop-filter: blur(2px);
+  background-color: rgba(0, 0, 0, 0.25);
+}
+
+.alertConfirm {
+  display: flex;
+  flex-direction: column;
+  position: block;
+  background-color: #f7f7f7;
+  padding: 2rem 3rem;
+  border-radius: 5px;
+  max-width: 40rem;
+}
+
+.buttonContainer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.exitIcon {
+  border: none;
+  background: none;
+  cursor: pointer;
+  align-self: flex-end;
+  font-size: 2rem;
+  font-weight: 900;
+}
+
+.message {
+  font-size: 1.8rem;
+  margin: 1rem 0 2rem 0;
+  align-self: center;
+}

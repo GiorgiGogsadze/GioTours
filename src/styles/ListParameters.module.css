@@ -9,10 +9,13 @@
   @media only screen and (max-width: 43.75em) {
     flex-direction: column;
   }
+  @media only screen and (max-width: 52.5em) {
+    margin-top: 0;
+  }
 }
 .filtersContainer {
   display: flex;
-  gap: 4rem;
+  gap: 2rem;
   flex-wrap: wrap;
   align-items: center;
 
@@ -29,7 +32,7 @@
   color: white;
   background-color: #3bb991;
   box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.1);
-  width: 15rem;
+  width: 14rem;
 }
 .optionsBox {
   border-radius: 5px;
@@ -45,4 +48,45 @@
 .option:hover {
   background-color: #3bb991;
   color: #fff;
+}
+
+.optionActive,
+.optionActive:hover {
+  background-color: #3bb991;
+  color: #fff;
+  cursor: default;
+}
+
+.chooserOptCont {
+  border: 1px solid #f3f4f6;
+  background-color: #fff;
+  box-shadow: 0 1px 2px #0000000a;
+  border-radius: 5px;
+  padding: 0.4rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  font-size: 1.4rem;
+  align-items: center;
+}
+
+.chooserOpt {
+  background-color: #fff;
+  border-radius: 5px;
+  border: none;
+  font-weight: 500;
+  padding: 0.2rem 0.8rem;
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+}
+
+/* .chooserOpt:hover {
+  box-shadow: 1px 1px 0.4rem #55c57a;
+} */
+
+.chooserOptActive {
+  border: none;
+  background-color: #3bb991;
+  color: #eef2ff;
+  font-weight: 500;
 }

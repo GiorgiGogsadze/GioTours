@@ -1,0 +1,77 @@
+.userBar {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  img {
+    border-radius: 50%;
+    width: 15rem;
+    height: 15rem;
+    object-fit: cover;
+  }
+}
+.leftButton {
+  margin-left: auto;
+}
+
+.nameSpace {
+  h2 {
+    font-size: 2rem;
+  }
+  h4 {
+    font-size: 1.6rem;
+    font-weight: 400;
+  }
+}
+
+.bookings {
+  margin-top: 10rem;
+}
+.bookingsHead {
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 5rem;
+  justify-content: center;
+  h3 {
+    font-size: 3rem;
+  }
+}
+.accessIdentifier {
+  font-size: 1.4rem;
+  padding: 0.5rem 1.5rem;
+  border-radius: 3rem;
+  color: white;
+}
+.accessIdentifier--public {
+  background-color: #55c57a;
+}
+.accessIdentifier--private {
+  background-color: #eb4d4b;
+}
+
+.privateMessage {
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  svg {
+    font-size: 2rem;
+    color: #222;
+  }
+  span {
+    font-size: 1.6rem;
+    color: #eb4d4b;
+  }
+}
+
+.accessToggleButton {
+  position: absolute;
+  right: 0;
+  overflow: hidden;
+  @media only screen and (max-width: 50em) {
+    position: relative;
+  }
+}

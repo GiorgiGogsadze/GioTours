@@ -1,61 +1,95 @@
-import { NavLink } from "react-router-dom";
-import LangChanger from "./LangChanger";
-import UserPlace from "./UserPlace";
-import Search from "./Search";
-import { useState } from "react";
-import { HashLink } from "react-router-hash-link";
-import { useDispatch } from "react-redux";
-import { clearParameters } from "../data/toursSlice";
+import { NavLink, useLocation } from "react-router-dom";
+import UserInNav from "./UserInNav";
+import Search from "../components/Search";
+import DropDown from "./DropDown";
+import { useEffect, useRef, useState } from "react";
+import { HiOutlineMenu } from "react-icons/hi";
+import { IoClose } from "react-icons/io5";
 
 export default function Header() {
-  const [droped, setDroped] = useState(false);
-  const dispatch = useDispatch();
+  const headerRef = useRef(null);
+  const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    setIsOpen(false);
+  }, [location]);
+
+  useEffect(() => {
+    headerRef.current.style.position = "absolute";
+    if (screen.width <= 840 && screen.height <= 840) return;
+
+    let previousScrollPosition = 0;
+    const isScrollingUp = () => {
+      let goingUp = false;
+      let scrollPosition = window.scrollY;
+      if (scrollPosition < previousScrollPosition) {
+        goingUp = true;
+      }
+      previousScrollPosition = scrollPosition;
+      return goingUp;
+    };
+    window.addEventListener("scroll", () => {
+      if (!headerRef.current) return;
+      const isUp = isScrollingUp();
+      if (!isUp || window.scrollY === 0) {
+        headerRef.current.style.position = "absolute";
+      }
+      if (isUp && window.scrollY > headerRef.current.offsetHeight * 2) {
+        headerRef.current.style.position = "fixed";
+      }
+    });
+  }, []);
+
   return (
-    <header className="header">
+    <>
+      <button
+        className="header_opener"
+        onClick={() => {
+          setIsOpen((b) => !b);
+        }}
+      >
+        {isOpen ? <IoClose /> : <HiOutlineMenu />}
+      </button>
+      <HeaderEl style={{ visibility: "hidden" }} />
+      <NavLink to="/" className="header_logo-sticky">
+        <img src={`/img/GioTours_logo-green.png`} alt="GioTours logo" />
+      </NavLink>
+      <HeaderEl
+        headerRef={headerRef}
+        className={isOpen ? "sticky-header show_header" : "sticky-header"}
+      />
+    </>
+  );
+}
+
+function HeaderEl({ headerRef, className, style }) {
+  const { pathname } = useLocation();
+  return (
+    <header
+      className={className ? `header ${className}` : "header"}
+      ref={headerRef}
+      style={style}
+    >
       <Search />
+      <NavLink to="/" className="header__logo">
+        <img
+          src={`/img/GioTours_logo-${pathname === "/" ? "green" : "white"}.png`}
+          alt="GioTours logo"
+        />
+      </NavLink>
       <nav className="nav nav--user">
-        <NavLink
-          to="/"
-          className="nav__el"
-          onClick={() => dispatch(clearParameters())}
-        >
+        {/* <NavLink to="/" className="nav__el">
           Home
-        </NavLink>
-        <div
-          className="contact--container"
-          onMouseLeave={() => setDroped(false)}
-        >
-          <NavLink
-            to="/contact"
-            className="nav__el"
-            onMouseEnter={() => setDroped(true)}
-          >
-            Contact Us
-          </NavLink>
-          {droped ? (
-            <div className="contact-dropDown">
-              <HashLink smooth to="/contact#about" className="nav__el">
-                About
-              </HashLink>
-              <HashLink smooth to="/contact#contact" className="nav__el">
-                Contact
-              </HashLink>
-            </div>
-          ) : (
-            ""
-          )}
-        </div>
-        <a
-          className="nav__el"
-          href="https://www.facebook.com/search/top?q=tours"
-          target="_blank"
-        >
-          <svg width={25} fill="white" className="facebook_icon">
-            <use xlinkHref="/img/icons.svg#icon-facebook"></use>
-          </svg>
-        </a>
-        <UserPlace />
-        <LangChanger />
+        </NavLink> */}
+        <DropDown
+          main={{ label: "About us", to: "/about" }}
+          drops={[
+            { label: "Info", to: "/about#info" },
+            { label: "Reviews", to: "/about#reviews" },
+          ]}
+        />
+        <UserInNav />
       </nav>
     </header>
   );
