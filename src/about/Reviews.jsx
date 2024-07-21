@@ -11,6 +11,7 @@ import StarRating from "../components/StarRating";
 import { useWriteReview } from "../hooks/useWriteReview";
 import { useDeleteReview } from "../hooks/useDeleteReview";
 import ReviewStats from "./ReviewStats";
+import { NavLink } from "react-router-dom";
 
 export default function Reviews() {
   const { curUser, isLoadingCurUser, curUserError } = useCurUser();
@@ -61,14 +62,14 @@ export default function Reviews() {
 function ReviewCard({ review }) {
   return (
     <div className="reviews__card">
-      <div className="reviews__avatar">
+      <NavLink className="reviews__avatar" to={`/users/${review.id}`}>
         <img
           className="reviews__avatar-img"
           src={review.avatar_link || DEFAULT_AVATAR_URL}
           alt="image of reviewer"
         />
         <h6 className="reviews__user">{review.real_name}</h6>
-      </div>
+      </NavLink>
       <p className="reviews__text">{review.review}</p>
       <div className="reviews__rating">
         {Array.from({ length: 5 }, (_, i) => (

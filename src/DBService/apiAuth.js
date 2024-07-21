@@ -74,8 +74,6 @@ export async function signup({ fullName, userName, password, email, phone }) {
     );
   }
 
-  console.log(data);
-
   return data;
 }
 
@@ -164,8 +162,6 @@ export async function updateCurrentUser({
   } else {
     return console.log("💣", "type in updateCurrentUser function is wrong");
   }
-  // await new Promise((a) => setTimeout(a, 1000));
-  console.log(updateData);
   const { data, error } = await supabase.auth.updateUser(updateData);
   if (error) {
     console.log("🔥", error.message);
@@ -178,6 +174,5 @@ export async function updateCurrentUser({
       error.message
     );
   }
-  console.log(data);
   return data;
 }
