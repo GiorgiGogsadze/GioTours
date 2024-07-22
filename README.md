@@ -1,6 +1,7 @@
 # Travel Company Platform: GioTours
 
-> [!IMPORTANT] > **The Website is Deployed on Netlify [https://giotours.netlify.app](https://giotours.netlify.app)**
+> [!IMPORTANT]
+> **The Website is Deployed on Netlify [https://giotours.netlify.app](https://giotours.netlify.app)**
 
 _The project was created for personal portfolio of Giorgi Gogsadze. The information contained in it is completely fictitious._
 
