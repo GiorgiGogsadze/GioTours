@@ -900,6 +900,7 @@
   font-size: 1.6rem;
 }
 .photo__upload-container {
+  cursor: pointer;
   position: relative;
 }
 .form__user-photo {
@@ -967,6 +968,11 @@
 
   span {
     color: #55c57a;
+  }
+  small {
+    font-size: 1.4rem;
+    color: #666;
+    font-weight: 400;
   }
 }
 

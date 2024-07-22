@@ -14,7 +14,7 @@ export default function AvatarChanger({ isLoading, curAvatar, onSubmit }) {
         onSubmit({ avatarFile });
       }}
     >
-      <div className="photo__upload-container">
+      <label className="photo__upload-container">
         <img
           className="form__user-photo"
           src={curAvatar}
@@ -30,7 +30,7 @@ export default function AvatarChanger({ isLoading, curAvatar, onSubmit }) {
           required
           disabled={isLoading}
         />
-      </div>
+      </label>
       <button
         className="btn btn--green"
         id={avatarFile ? "btn-set-avatar" : "btn-set-avatar_disabled"}

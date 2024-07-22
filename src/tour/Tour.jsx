@@ -79,7 +79,7 @@ export default function Tour() {
             </div>
             <div className="overview-box__detail">
               <IoPeopleOutline className="overview-box__icon" />
-              <span className="overview-box__label">PARTICIPANTS</span>
+              <span className="overview-box__label">Booked by</span>
               <span className="overview-box__text">
                 {tour.number_of_bookings === 0
                   ? "Be First"

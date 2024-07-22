@@ -20,7 +20,7 @@
   --button-dark-gray: #444;
   --border-color: #e5e7eb;
   --header-border-color: #f3f4f6;
-  --input-black: #000;
+  --input-black: #333;
 
   &.dark {
     --dark-button-orange: #fff;
@@ -154,7 +154,13 @@
     background-color: transparent;
     color: var(--input-black);
     transition: var(--transition-property);
-    border-color: var(--input-black);
+    border: 1px solid var(--section-gray);
+    border-radius: 1px;
+  }
+  input:focus,
+  textarea:focus {
+    border-color: #399f54;
+    outline: none;
   }
   input {
     text-align: center;

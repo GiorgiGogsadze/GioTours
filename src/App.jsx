@@ -7,7 +7,7 @@ import ErrorPage from "./components/ErrorPage";
 import AlertProvider from "./Alert/AlertProvider";
 import AuthGate from "./userAuthentication/AuthGate";
 import AppLayout from "./AppLayout";
-import InternetGate from "./components/InternetGate";
+// import InternetGate from "./components/InternetGate";
 import SupabaseSubscribes from "./components/SupabaseSubscribes";
 import AlertTop from "./Alert/AlertTop";
 import AlertConfirm from "./Alert/AlertConfirm";

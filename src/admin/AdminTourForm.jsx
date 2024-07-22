@@ -24,7 +24,7 @@ export default function AdminTourForm({ tour, setFormOpen }) {
     if (!tour) {
       document.documentElement.scrollTo({
         left: 0,
-        top: document.body.scrollHeight,
+        top: document.querySelector(`.${s.adminPage}`).scrollHeight,
         behavior: "smooth",
       });
       return;
@@ -153,7 +153,12 @@ export default function AdminTourForm({ tour, setFormOpen }) {
           {...register("image", {
             required: { value: !tour, message: "image is required" },
           })}
-          style={{ backgroundColor: "transparent", color: "inherit" }}
+          style={{
+            backgroundColor: "transparent",
+            color: "inherit",
+            border: "none",
+            cursor: "pointer",
+          }}
         />
         <p className={s.errMsg}>{errors?.image?.message}</p>
       </label>
