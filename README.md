@@ -15,7 +15,7 @@
 >* [Admin](https://giotours.netlify.app/admin) 
 >* [Does not exist](https://giotours.netlify.app/jahsfkw) 
 
-_The project was created for personal portfolio of Giorgi Gogsadze. The information contained in it is completely fictitious._
+_The project was created for personal portfolio of Giorgi Gogsadze in Summer 2024. The information contained in it is completely fictitious._
 
 ## Technical Side
 
