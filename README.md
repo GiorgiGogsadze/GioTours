@@ -1,7 +1,7 @@
 # Travel Company Platform: GioTours
 
 > [!IMPORTANT] 
-> **The Website is Deployed on Netlify [https://giotours.netlify.app](https://giotours.netlify.app)**
+> **The Website is Deployed on Netlify https://giotours.netlify.app**
 
 > [!NOTE]
 > Pages to Visit: 
