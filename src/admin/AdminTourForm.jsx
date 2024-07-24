@@ -7,7 +7,12 @@ import { useAlertConfirm } from "../Alert/AlertConfirmContext";
 import { useEffect } from "react";
 import { isDateActive } from "../helper/isDateActive";
 
-export default function AdminTourForm({ tour, setFormOpen }) {
+export default function AdminTourForm({
+  tour,
+  setFormOpen,
+  returnTo,
+  elementRef,
+}) {
   const { addTour, isAddingTour } = useAdminAddTour();
   const { editTour, isEditingTour } = useAdminEditTour();
 
@@ -95,16 +100,18 @@ export default function AdminTourForm({ tour, setFormOpen }) {
         }, []),
     };
     const imageFile = image.length > 0 ? image[0] : undefined;
-    console.log(newTour, imageFile);
 
+    const successFn = () => {
+      reset();
+      setFormOpen(0);
+      if (returnTo || returnTo === 0)
+        elementRef.current.scrollTo({ top: returnTo });
+    };
     if (!tour) {
       addTour(
         { tour: newTour, image: imageFile },
         {
-          onSuccess: () => {
-            reset();
-            setFormOpen(0);
-          },
+          onSuccess: successFn,
         }
       );
     } else {
@@ -112,10 +119,7 @@ export default function AdminTourForm({ tour, setFormOpen }) {
         editTour(
           { oldTour: tour, updatedTour: newTour, newImg: imageFile },
           {
-            onSuccess: () => {
-              reset();
-              setFormOpen(0);
-            },
+            onSuccess: successFn,
           }
         );
       } else {
@@ -129,10 +133,7 @@ export default function AdminTourForm({ tour, setFormOpen }) {
                 renew: true,
               },
               {
-                onSuccess: () => {
-                  reset();
-                  setFormOpen(0);
-                },
+                onSuccess: successFn,
               }
             ),
           "As The Tour was in past, new Tour with given information will be created",

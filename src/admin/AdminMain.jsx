@@ -4,7 +4,7 @@ import SpinnerMini from "../components/SpinnerMini";
 import ErrorPage from "../components/ErrorPage";
 import { useAdminDeleteTour } from "./useAdminDeleteTour";
 import AdminTourForm from "./AdminTourForm";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import s from "./Admin.module.css";
 import { getTimeString } from "../helper/getTimeString";
 import { useAlertConfirm } from "../Alert/AlertConfirmContext";
@@ -48,6 +48,8 @@ export default function AdminMain() {
 function TourTable({ formOpen, setFormOpen }) {
   const { adminTours, isLoadingAdminTours, adminToursError } = useAdminTours();
   const { alertConfirm } = useAlertConfirm();
+  const tourTableSection = useRef();
+  const [scrollPosition, setScrollPosition] = useState(0);
   if (isLoadingAdminTours) return <Spinner />;
   if (adminToursError)
     return (
@@ -84,7 +86,7 @@ function TourTable({ formOpen, setFormOpen }) {
         </span>
         <span>NoB</span>
       </header>
-      <section>
+      <section ref={tourTableSection}>
         {adminTours.map((el) => (
           <div key={el.id}>
             <TourTableLine
@@ -92,11 +94,15 @@ function TourTable({ formOpen, setFormOpen }) {
               formOpen={formOpen}
               setFormOpen={setFormOpen}
               alertConfirm={alertConfirm}
+              elementRef={tourTableSection}
+              setScrollPosition={setScrollPosition}
             />
             {formOpen === el.id && (
               <AdminTourForm
                 tour={el}
                 setFormOpen={setFormOpen}
+                returnTo={scrollPosition}
+                elementRef={tourTableSection}
                 // className={`${s.spanAllColumns} ${s.adminTourForm}`}
               />
             )}
@@ -106,7 +112,14 @@ function TourTable({ formOpen, setFormOpen }) {
     </div>
   );
 }
-function TourTableLine({ tour, formOpen, setFormOpen, alertConfirm }) {
+function TourTableLine({
+  tour,
+  formOpen,
+  setFormOpen,
+  alertConfirm,
+  elementRef,
+  setScrollPosition,
+}) {
   const { deleteTour, isDeletingTour } = useAdminDeleteTour();
   return (
     <div className={`${s.tableRow} ${s.toursTableBody}`}>
@@ -124,7 +137,10 @@ function TourTableLine({ tour, formOpen, setFormOpen, alertConfirm }) {
           {isDeletingTour ? <SpinnerMini /> : <IoTrashOutline />}
         </button>
         <button
-          onClick={() => setFormOpen((b) => (b === tour.id ? 0 : tour.id))}
+          onClick={() => {
+            setFormOpen((b) => (b === tour.id ? 0 : tour.id));
+            setScrollPosition(elementRef.current.scrollTop);
+          }}
         >
           {formOpen === tour.id ? <IoClose /> : <FaEdit />}
         </button>

@@ -1,7 +1,19 @@
 # Travel Company Platform: GioTours
 
-> [!IMPORTANT]
+> [!IMPORTANT] 
 > **The Website is Deployed on Netlify [https://giotours.netlify.app](https://giotours.netlify.app)**
+
+> [!NOTE]
+> Pages to Visit: 
+>+[Home](https://giotours.netlify.app) 
+>+[New York Tour](https://giotours.netlify.app/tours/4) (e.g)
+>+[About us and Reviews](https://giotours.netlify.app/about) 
+>+[Sign up](https://giotours.netlify.app/signUp) 
+>+[Log in](https://giotours.netlify.app/logIn) 
+>+[Profile of Giorgi Gogsadze](https://giotours.netlify.app/users/95f2a99b-b721-4ef9-9467-cc7f79ec1642) (e.g)
+>+[edit your account](https://giotours.netlify.app/editUser) (Protected Route, you can access it if you're logged in)
+>+[Admin](https://giotours.netlify.app/admin) 
+>+[Does not exist](https://giotours.netlify.app/jahsfkw) 
 
 _The project was created for personal portfolio of Giorgi Gogsadze. The information contained in it is completely fictitious._
 
@@ -13,7 +25,9 @@ The project utilizes the **React** JavaScript library powered by **Vite**. For s
 
 ### Back-end and database
 
-The project Back-end is powered by Supabase. It's an open-source database infrastructure built on PostgreSQL, therefore main challenge was building database rater than REST API. Foreign key relationships between bookings, tours and accounts table, Indexes, custom functions (for calculating left time till tour start) and Triggers (for updating booking numbers that is stored generated column for performance) made database consistent and performant. Besides, Supabase is used to store all the images and, significantly for authentication and authorization users.
+The project’s backend relies on Supabase—an open-source database infrastructure built on PostgreSQL. Therefore primary focus was on database design rather than REST API development. Complex relationships between bookings, tours and accounts table, Indexes, custom functions (such as calculating the remaining time until a tour starts) and Triggers (e.g. for updating booking numbers that is stored generated column in accounts and tours tables) made database more consistent and highly performant.
+
+Notably, Supabase serves as the storage for all images and plays a crucial role in user authentication and authorization.
 
 ## Description
 
@@ -26,7 +40,6 @@ In order to book a tour, one needs to have an account.
 
 > [!NOTE]
 > There are 3 options for Login:
->
 > 1. Register on this site, and then log in using your username
 > 2. Login using Google.
 > 3. Login using Facebook. (It works only for developers, publishing needs business verification which in this case couldn't be done)
@@ -42,4 +55,4 @@ In about us page, there is the customer reviews section, where those who have bo
 *https://giotours.netlify.app/admin*
 
 > [!NOTE]
-> The Route is protected, so without admin account you can't access the page (even if you manage to access, due to database policies, your changes won't be saved). if you're intrested in seeing it, send me email at gogsadzegeorge42@gmail.com
+> The Protection of Route is disabled, so you can visit and see the page without admin account, but due to database policies, your changes won't be saved. if you're intrested in checking functionality, send me email at gogsadzegeorge42@gmail.com
