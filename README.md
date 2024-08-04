@@ -60,4 +60,4 @@ Additionally, users can explore profiles of reviewers, and view their booked tou
 > [!NOTE]
 > The Protection of Route is disabled, so you can visit and see the page without admin account, but due to database policies, your changes won't be saved. if you're intrested in checking functionality, send me email at gogsadzegeorge42@gmail.com
 
-On the admin page, all tours are conveniently listed, allowed to edit or delete them, and in the case of an already completed tour, replace them with a new one. Additionally, Company can easily add new tours through this interface.
+On the admin page, all tours are conveniently listed, allowed to edit or delete them, and in the case of an already completed tour, replace them with a new one. Company can also easily add new tours through this interface. Additionally, Dark and light modes are accessible on the admin page
